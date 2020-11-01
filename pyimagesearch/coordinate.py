@@ -7,7 +7,6 @@ class Coordinate:
         approx = cv2.approxPolyDP(c, 0.009 * cv2.arcLength(c, True), True)
         n = approx.ravel()
         i = 0
-        val = Points()
         for j in n:
             if (i % 2 == 0):
                 x = n[i]
@@ -18,6 +17,7 @@ class Coordinate:
 
                 if (i == 0):
                     # text on topmost co-ordinate.
-                    coo = val.first(x,y)
-            
-        return coo
+                    val = Points(x,y)
+                   # coo = val.first(x,y)
+
+        return val
