@@ -20,7 +20,6 @@ cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
 cnts = imutils.grab_contours(cnts)
 sd = ShapeDetector()
 coo = Coordinate()
-pt = Points()
 coordinate_arr = []
 for c in cnts:
 	M = cv2.moments(c)
@@ -33,6 +32,7 @@ for c in cnts:
 	shape = sd.detect(c)
 	xy = coo.coordinates(c);
 	coordinate_arr.append(xy);
+
 	c = c.astype("float")
 	c *= ratio
 	c = c.astype("int")
@@ -43,3 +43,6 @@ for c in cnts:
 
 	cv2.imshow("Image", image)
 	cv2.waitKey(0)
+
+for j in coordinate_arr :
+	print(j.x, j.y)
